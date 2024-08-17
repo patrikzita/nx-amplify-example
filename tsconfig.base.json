@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@jiskra-nx-amplify/shared-ui": ["libs/shared-ui/src/index.ts"],
+      "@jiskra-nx-amplify/shared-ui/server": ["libs/shared-ui/src/server.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
