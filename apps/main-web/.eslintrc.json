@@ -10,6 +10,29 @@
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
+        "@next/next/no-html-link-for-pages": ["error", "apps/main-web/pages"],
+        "no-restricted-imports": [
+          "error",
+          {
+            "name": "next/link",
+            "message": "Please import from `@main-web/navigation` instead."
+          },
+          {
+            "name": "next/navigation",
+            "importNames": [
+              "redirect",
+              "permanentRedirect",
+              "useRouter",
+              "usePathname"
+            ],
+            "message": "Please import from `@main-web/navigation` instead."
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
         "@next/next/no-html-link-for-pages": ["error", "apps/main-web/pages"]
       }
     },

@@ -30,6 +30,7 @@ export default defineConfig({
     reuseExistingServer: !process.env.CI,
     cwd: workspaceRoot,
   },
+  fullyParallel: true,
   projects: [
     {
       name: 'chromium',
