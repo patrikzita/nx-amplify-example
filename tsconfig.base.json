@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@jiskra-nx-amplify/amplify-backend": [
+        "libs/amplify-backend/src/index.ts"
+      ],
       "@jiskra-nx-amplify/shared-ui": ["libs/shared-ui/src/index.ts"],
       "@jiskra-nx-amplify/shared-ui/server": ["libs/shared-ui/src/server.ts"]
     }
