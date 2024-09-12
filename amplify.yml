@@ -1,6 +1,6 @@
 version: 1
 applications:
-  - name: amplify-backend
+  - name: backend
     appRoot: libs/amplify-backend
     backend:
       phases:
@@ -16,7 +16,7 @@ applications:
             - pnpm install --frozen-lockfile
             - pnpm exec ampx pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID --debug
 
-  - name: main-web
+  - name: frontend
     appRoot: apps/main-web
     frontend:
       phases:
@@ -32,7 +32,7 @@ applications:
             - mv .env ./.amplify-hosting/compute/default/.env
 
       artifacts:
-        baseDirectory: .amplify-hosting
+        baseDirectory: .next
         files:
           - '**/*'
 
