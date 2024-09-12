@@ -1,0 +1,36 @@
+version: 1
+backend:
+  phases:
+    preBuild:
+      commands:
+        - npm i -g pnpm
+        - pnpm config set store-dir .pnpm-store
+        - pnpm i
+    build:
+      commands:
+        - corepack enable
+        - pnpm config set node-linker hoisted
+        - pnpm install --frozen-lockfile
+        - pnpm exec ampx pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID --debug
+
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm i -g pnpm
+        - pnpm config set store-dir .pnpm-store
+        - pnpm i
+    build:
+      commands:
+        - npx ampx generate outputs --branch $AWS_BRANCH --app-id $BACKEND_APP_ID
+        - pnpm  nx build main-web"
+        - mv .env ./.amplify-hosting/compute/default/.env
+
+  artifacts:
+    baseDirectory: .amplify-hosting
+    files:
+      - '**/*'
+
+  cache:
+    paths:
+      - .pnpm-store/**/*
